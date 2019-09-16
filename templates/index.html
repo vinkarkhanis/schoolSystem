@@ -72,10 +72,13 @@
                 <div class="container">
                     <div class="row-fluid">
                         <div class="col-md-6 col-sm-6 text-left">
-                            <p>
-                                <strong><i class="fa fa-phone"></i></strong> +90 543 123 45 67 &nbsp;&nbsp;
-                                <strong><i class="fa fa-envelope"></i></strong> <a href="mailto:#">info@yoursite.com</a>
-                            </p>
+                            {%if user.is_authenticated%}
+									<li>Hello {{user.first_name}}</li>
+									<li><a href=useraccounts/logout>Logout</a></li>
+									{%else%}
+									<li><a href=useraccounts/register>Register</a></li>
+									<li><a href=useraccounts/login>Login</a></li>
+									{%endif%}
                         </div><!-- end left -->
                         <div class="col-md-6 col-sm-6 hidden-xs text-right">
                             <div class="social">
