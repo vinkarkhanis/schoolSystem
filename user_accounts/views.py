@@ -1,9 +1,13 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
+from payment import views as paymentview
 
 
 # Create your views here.
+from django.urls import reverse
+
 
 def login(request):
     if request.method == 'POST':
@@ -12,7 +16,7 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return render(request,'homePage.html')
+            return redirect('homePage')
         else:
             messages.info(request, 'Invalid Credentials')
             return redirect('login')
@@ -51,3 +55,10 @@ def register(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+def homePage(request):
+    return render(request, 'homePage.html')
+
+def payment(request):
+    print("here")
+    paymentview.paymentsetup(request)
