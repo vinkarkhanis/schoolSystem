@@ -11,6 +11,4 @@ class PaymentInfo(models.Model):
     receipt = models.FileField(upload_to='receipts/', null=True, blank=True)
 
 
-class Fees(models.Model):
-    std = models.IntegerField()
-    fees = models.FloatField()
+

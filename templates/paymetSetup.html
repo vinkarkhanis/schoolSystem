@@ -1,11 +1,32 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Payment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{%static 'css/login.css'%}">
+    <script src="{%static 'js/login.js'%}"></script>
 </head>
 <body>
-<h1>Test</h1>
+<div class="login-page">
+    <div class="form">
+        <form action="paymentsetup" method="POST">
+            {%csrf_token%}
+            <input type="text" name="rollNumber" placeholder="Roll Number"><br>
+            <input type="number" name="standard" placeholder="Standard"><br>
+            <input type="text" name="division" placeholder="division"><br>
+            <button>View Payment info</button>
 
+        </form>
+
+        <div>
+            {%for message in messages%}
+            <h3>{{message}}</h3>
+            {%endfor%}
+        </div>
+    </div>
+</div>
 </body>
 </html>

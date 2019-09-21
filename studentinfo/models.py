@@ -1,7 +1,11 @@
 from django.db import models
 
 
-# Create your models here.
+
+
+class Fees(models.Model):
+    std = models.IntegerField()
+    fees = models.FloatField()
 
 class Student(models.Model):
     rollNum = models.IntegerField()
@@ -13,3 +17,5 @@ class Student(models.Model):
     religion = models.TextField()
     cast = models.TextField()
     category = models.TextField()
+    fees=models.FloatField()
+
