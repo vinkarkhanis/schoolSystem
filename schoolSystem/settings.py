@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'studentinfo.apps.StudentinfoConfig',
     'payment.apps.PaymentConfig',
+    'studentinfo.apps.StudentinfoConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

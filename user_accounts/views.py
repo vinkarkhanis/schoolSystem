@@ -59,6 +59,3 @@ def logout(request):
 def homePage(request):
     return render(request, 'homePage.html')
 
-def payment(request):
-    print("here")
-    paymentview.paymentsetup(request)
