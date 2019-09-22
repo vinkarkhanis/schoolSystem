@@ -6,7 +6,6 @@ from payment import views as paymentview
 
 
 # Create your views here.
-from django.urls import reverse
 
 
 def login(request):

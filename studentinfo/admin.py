@@ -2,18 +2,18 @@ from django.contrib import admin
 from django.forms import forms
 
 from .models import Student,Fees
-from django.contrib.admin import AdminSite
-from django.utils.translation import ugettext_lazy
+from import_export.admin import ImportExportModelAdmin
 
 admin.site.register(Student)
 admin.site.register(Fees)
 
+@admin.register(Student)
+class StudentAdmin(ImportExportModelAdmin):
+    pass
 
-class CsvImportForm(forms.Form):
-    csv_file = forms.FileField()
 
-# @admin.register(Student)
-# class student_admin(admin.ModelAdmin, ExportCsvMixin):
+
+
     
 
 
