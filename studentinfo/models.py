@@ -6,6 +6,11 @@ from django.db import models
 class Fees(models.Model):
     std = models.IntegerField()
     fees = models.FloatField()
+    def __str__(self):
+        return  "Std: "+str(self.std) + ' = ' + "₹"+str(self.fees)+"/-"
+
+    class Meta:
+        verbose_name_plural = "Fees"
 
 class Student(models.Model):
     rollNum = models.IntegerField()
@@ -17,5 +22,10 @@ class Student(models.Model):
     religion = models.TextField()
     cast = models.TextField()
     category = models.TextField()
-    fees=models.FloatField()
+    fees=models.FloatField(blank=True, null=True)
+
+    def __str__(self):
+        return  self.name
+
+
 

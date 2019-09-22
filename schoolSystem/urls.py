@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
 
 urlpatterns = [
     path('',include('studentinfo.urls')),
@@ -22,3 +23,5 @@ urlpatterns = [
     path('useraccounts/',include('user_accounts.urls')),
     path('payment/', include('payment.urls')),
 ]
+
+admin.site.site_header = settings.ADMIN_SITE_HEADER

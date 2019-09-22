@@ -9,6 +9,8 @@ class PaymentInfo(models.Model):
     payment = models.FloatField()
     dateTxn = models.DateField()
     receipt = models.FileField(upload_to='receipts/', null=True, blank=True)
+    # def __str__(self):
+    #     return  "Payment: "+str(self.rollNum.rollNum)
 
 
 

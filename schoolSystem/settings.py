@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ADMIN_SITE_HEADER = "My shiny new administration"
 
 
 # Quick-start development settings - unsuitable for production
@@ -57,7 +58,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR,'templates')],
-        #'DIRS': ['/home/admin1/CNCS/Django/schoolManagement/schoolSystem/edulogy',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
