@@ -40,6 +40,7 @@ class DateFilter(InputFilter):
 # admin.site.register(PaymentInfo)
 @admin.register(PaymentInfo)
 class PaymentAdmin(ImportExportModelAdmin):
+    autocomplete_fields = ("rollNum",)
     list_display = ('roll_no','name','payment','dateTxn','Class',)
     search_fields = ('rollNum__rollNum',)
     list_filter=(DateFilter,)
