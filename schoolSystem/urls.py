@@ -24,4 +24,7 @@ urlpatterns = [
     path('payment/', include('payment.urls')),
 ]
 
-admin.site.site_header = settings.ADMIN_SITE_HEADER
+admin.site.site_header = 'My Home Page'
+admin.site.site_title = 'Main Title |'
+admin.site.index_title = 'Index'
+admin.site.index_title = 'Index'
