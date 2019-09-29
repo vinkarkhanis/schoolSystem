@@ -25,7 +25,7 @@ class Student(models.Model):
     fees=models.FloatField(blank=True, null=True)
 
     def __str__(self):
-        return  self.name
+        return  "Name - "+self.name+" --> "+"Class - "+str(self.std)+":"+self.div
 
 
 
