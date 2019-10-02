@@ -134,6 +134,6 @@ STATIC_ROOT=os.path.join(BASE_DIR,'assets')
 MEDIA_URL='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 IMPORT_EXPORT_USE_TRANSACTIONS = True
-
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 
