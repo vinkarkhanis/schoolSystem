@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView
 from django.conf import settings
 
 urlpatterns = [
@@ -23,6 +24,11 @@ urlpatterns = [
     #path('admin/', admin.site.urls),
     path('useraccounts/',include('user_accounts.urls')),
     path('payment/', include('payment.urls')),
+    path('accounts/password_reset/',PasswordResetView.as_view(),name='password_reset'),
+    path('accounts/password_reset/done/',PasswordResetDoneView.as_view(),name='password_reset_done'),
+    path('accounts/password_reset/confirm/',PasswordResetConfirmView.as_view(),name='password_reset_confirm'),
+    path(r'^', include('django.contrib.auth.urls')),
+
 ]
 
 admin.site.site_header = 'My Home Page'

@@ -14,8 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ADMIN_SITE_HEADER = "My shiny new administration"
-
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -134,6 +133,13 @@ STATIC_ROOT=os.path.join(BASE_DIR,'assets')
 MEDIA_URL='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 IMPORT_EXPORT_USE_TRANSACTIONS = True
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'nlcompsolutions@gmail.com'
+EMAIL_HOST_PASSWORD = 'cncs@2018'
+
 
 
