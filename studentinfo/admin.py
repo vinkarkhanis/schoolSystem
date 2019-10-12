@@ -9,11 +9,11 @@ admin.site.register(Fees)
 
 @admin.register(Student)
 class StudentAdmin(ImportExportModelAdmin):
-    list_display = ('rollNum','student_class','name')
+    list_display = ('rollNum','student_class','surname','first_name')
     list_filter = ('category','religion','cast',)
-    search_fields = ('name','rollNum',)
+    search_fields = ('surname','first_name','rollNum',)
     fields = (
-        'rollNum','name','gender','address','std','div','religion','cast','category'
+        'rollNum','first_name','middle_name','surname','gender','address','std','div','religion','cast','category'
     )
 
     def student_class(self,obj):

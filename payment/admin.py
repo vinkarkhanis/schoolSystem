@@ -41,7 +41,7 @@ class DateFilter(InputFilter):
 @admin.register(PaymentInfo)
 class PaymentAdmin(ImportExportModelAdmin):
     autocomplete_fields = ("rollNum",)
-    list_display = ('roll_no','name','payment','dateTxn','Class',)
+    list_display = ('roll_no','name','surname','payment','dateTxn','Class',)
     search_fields = ('rollNum__rollNum',)
     list_filter=(DateFilter,)
     # fields = (
@@ -53,7 +53,10 @@ class PaymentAdmin(ImportExportModelAdmin):
         return "{} {}".format(obj.rollNum.std,obj.rollNum.div)
 
     def name(self,obj):
-        return "{}".format(obj.rollNum.name)
+        return "{}".format(obj.rollNum.first_name)
+
+    def surname(self,obj):
+        return "{}".format(obj.rollNum.surname)
 
     def roll_no(self,obj):
         _roll_no = obj.rollNum.rollNum
