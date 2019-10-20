@@ -16,7 +16,7 @@ def login(request):
         userName = "SanketBBBBBB"
         if user is not None:
             auth.login(request, user)
-            return redirect('homePage')
+            return redirect('/admin')
         else:
             messages.info(request, 'Invalid Credentials')
             return redirect('login')

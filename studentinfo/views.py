@@ -22,7 +22,7 @@ def GeneratePdf(request):
     receiptNo = now.strftime("%d%m%y%H%M")
     date = now.strftime("%d/%m/%Y")
     day = now.strftime("%A")
-    studentName = "Sanket"
+    studentName = Student.first_name
     amount = "2000"
     return render_to_pdf(
         'pdfTemplate.html',

@@ -1,16 +1,71 @@
 {% extends "admin/base_site.html" %}
 
 {% load staticfiles %}
+{% load i18n %}
 
 {% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
 {% block branding %}
+<style>
+    .center{
+        text-align: right;
+    }
+
+</style>
 <h1 id="site-name">
     <a href="{% url 'admin:index' %}">
-        <img src="{% static '/images/PCMC_Logo.jpeg' %}" height="40px" />
-        School Name
+        <img src="{% static '/images/school_banner.png' %}"/>
     </a>
 </h1>
+
+<div id="container">
+    <div class="center">
+        {% if not is_popup %}
+        <!-- Header -->
+        <div id="header">
+            {% block usertools %}
+            {% if has_permission %}
+            <div id="user-tools">
+                {% block welcome-msg %}
+                {% trans 'Welcome,' %}
+                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+                {% endblock %}
+                {% block userlinks %}
+                {% if site_url %}
+                <a href="{{ site_url }}">{% trans 'View site' %}</a> /
+                {% endif %}
+                {% if user.is_active and user.is_staff %}
+                {% url 'django-admindocs-docroot' as docsroot %}
+                {% if docsroot %}
+                <a href="{{ docsroot }}">{% trans 'Documentation' %}</a> /
+                {% endif %}
+                {% endif %}
+                {% if user.has_usable_password %}
+                <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /
+                {% endif %}
+                <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
+                {% endblock %}
+            </div>
+            {% endif %}
+            {% endblock %}
+        </div>
+        <!-- END Header -->
+        {% endif %}
+
+        {% block messages %}
+        {% if messages %}
+        <ul class="messagelist">{% for message in messages %}
+            <li
+            {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endblock messages %}
+        {% block footer %}
+        <div id="footer"></div>
+        {% endblock %}
+    </div>
+</div>
 {% endblock %}
 
 {% block nav-global %}{% endblock %}
