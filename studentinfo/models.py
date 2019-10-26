@@ -33,6 +33,7 @@ class Student(models.Model):
     student_id = models.IntegerField()
     aadhar_no = models.CharField(max_length=20,blank=True)
     register_no = models.CharField(max_length=50)
+    total_fee_received = models.BooleanField(default=False)
 
     class Meta:
         unique_together = ('rollNum', 'div','std')

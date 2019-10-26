@@ -9,4 +9,6 @@ def create_badge(sender, instance=None, created=False, **kwargs):
         student, is_created = Student.objects.get_or_create(rollNum=instance.rollNum.rollNum,std=instance.rollNum.std,
                                                             div=instance.rollNum.div)
         student.fees = student.fees-instance.payment
+        if(student.fees == 0):
+            student.total_fee_received = True;
         student.save()
