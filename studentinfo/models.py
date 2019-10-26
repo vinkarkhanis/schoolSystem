@@ -25,6 +25,14 @@ class Student(models.Model):
     cast = models.CharField(max_length=50)
     category = models.TextField(choices=Reader.read('categories'), default=Reader.read('categories')[0])
     fees=models.FloatField(blank=True, null=True)
+    dob = models.DateField()
+    joining_date = models.DateField(blank=True)
+    leaving_date = models.DateField(blank=True)
+    birth_place = models.CharField(max_length=100)
+    prev_school = models.TextField(blank=True)
+    student_id = models.IntegerField()
+    aadhar_no = models.CharField(max_length=20,blank=True)
+    register_no = models.CharField(max_length=50)
 
     class Meta:
         unique_together = ('rollNum', 'div','std')

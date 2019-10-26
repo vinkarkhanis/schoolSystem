@@ -13,7 +13,8 @@ class StudentAdmin(ImportExportModelAdmin):
     list_filter = ('category','religion','cast',)
     search_fields = ('surname','first_name','rollNum',)
     fields = (
-        'rollNum','first_name','middle_name','surname','gender','address','std','div','religion','cast','category'
+        'rollNum','first_name','middle_name','surname','gender','address','std','div','religion','cast','category','dob',
+        'joining_date','leaving_date','birth_place','prev_school','student_id','aadhar_no','register_no'
     )
 
     def student_class(self,obj):
