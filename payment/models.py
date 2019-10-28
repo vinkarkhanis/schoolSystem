@@ -1,4 +1,3 @@
-
 from random import randint
 
 from django.db import models
@@ -16,7 +15,3 @@ class PaymentInfo(models.Model):
     receiptNo = models.CharField(max_length=12,blank=True, unique=True, default=str('rcpt-'+str(randint(1,10))+str(randint(756, 9000))))
     # def __str__(self):
     #     return  "Payment: "+str(self.rollNum.rollNum)
-
-
-
-

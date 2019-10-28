@@ -94,10 +94,9 @@ class PaymentAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     def print(self, request, object_id, *args, **kwargs):
         return self.process_action(
             request=request,
-            action_form=GeneratePdf,
-            action_title='Print',
+            object_id=object_id
         )
 
-    def process_action(self, request,action_form,action_title):
-        return GeneratePdf(request)
+    def process_action(self, request,object_id):
+        return GeneratePdf(request,object_id)
 
