@@ -35,3 +35,7 @@ def GeneratePdf(request):
             'day' : day
         }
     )
+
+def request_page(request):
+  if(request.GET.get('print')):
+    return GeneratePdf(request)
