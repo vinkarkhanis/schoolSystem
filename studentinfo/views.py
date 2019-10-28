@@ -17,12 +17,15 @@ def index(request):
 
 def GeneratePdf(request):
     # Retrieve data or whatever you need
+
     userName = "Sanket Bhumkar001"
+    stud=Student.objects.all()
     now = datetime.now()
     receiptNo = now.strftime("%d%m%y%H%M")
     date = now.strftime("%d/%m/%Y")
     day = now.strftime("%A")
-    studentName = Student.first_name
+    #onclick = "location.href='/pdf'"
+    studentName = str(stud[0].first_name)
     amount = "2000"
     return render_to_pdf(
         'pdfTemplate.html',

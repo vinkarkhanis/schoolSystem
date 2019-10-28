@@ -1,8 +1,15 @@
+from django.conf.urls import url
 from django.contrib import admin, messages
 from django.db.models import Q
 from django.shortcuts import render
+from django.urls import reverse, path
+from django.utils.html import format_html
 
 from studentinfo.models import Student
+
+from studentinfo.views import GeneratePdf
+
+from studentinfo import views
 from .models import PaymentInfo
 from import_export.admin import ImportExportModelAdmin
 
@@ -39,9 +46,9 @@ class DateFilter(InputFilter):
 
 # admin.site.register(PaymentInfo)
 @admin.register(PaymentInfo)
-class PaymentAdmin(ImportExportModelAdmin):
+class PaymentAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     autocomplete_fields = ("rollNum",)
-    list_display = ('roll_no','name','surname','payment','dateTxn','Class',)
+    list_display = ('roll_no','name','surname','payment','dateTxn','Class','print_receipt',)
     search_fields = ('rollNum__rollNum',)
     readonly_fields = ["receiptNo"]
     list_filter=(DateFilter,)
@@ -65,6 +72,32 @@ class PaymentAdmin(ImportExportModelAdmin):
 
     roll_no.admin_order_field = 'rollNum'
 
+    def print_receipt(self, obj):
+        return format_html('<a class="button" href="{}">Print</a>',
+                            reverse('admin:payment_receipt',args=[obj.pk]))
 
+    print_receipt.short_description = 'Print Receipt'
+    print_receipt.allow_tags = True
 
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            url(
+                 r'^(?P<object_id>.+)/print/$',
+                self.admin_site.admin_view(self.print),
+                name='payment_receipt',
+            ),
+        ]
+        print('URLSSSSSSSSSSSS'+str(custom_urls + urls))
+        return custom_urls + urls
+
+    def print(self, request, object_id, *args, **kwargs):
+        return self.process_action(
+            request=request,
+            action_form=GeneratePdf,
+            action_title='Print',
+        )
+
+    def process_action(self, request,action_form,action_title):
+        return GeneratePdf(request)
 
