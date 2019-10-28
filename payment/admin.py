@@ -43,6 +43,7 @@ class PaymentAdmin(ImportExportModelAdmin):
     autocomplete_fields = ("rollNum",)
     list_display = ('roll_no','name','surname','payment','dateTxn','Class',)
     search_fields = ('rollNum__rollNum',)
+    readonly_fields = ["receiptNo"]
     list_filter=(DateFilter,)
     # fields = (
     #      'Student_rollNum',
