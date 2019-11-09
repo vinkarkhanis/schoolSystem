@@ -1,4 +1,7 @@
+from random import randint
+
 from django.db import models
+from django.template.defaultfilters import slugify
 from studentinfo.models import Student
 
 
@@ -8,9 +11,5 @@ class PaymentInfo(models.Model):
     rollNum = models.ForeignKey(Student, on_delete=models.CASCADE)
     payment = models.FloatField()
     dateTxn = models.DateField()
-    receipt = models.FileField(upload_to='receipts/', null=True, blank=True)
     # def __str__(self):
     #     return  "Payment: "+str(self.rollNum.rollNum)
-
-
-
