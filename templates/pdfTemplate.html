@@ -4,9 +4,12 @@
     <head>
         <title>Reciept</title>
         <style type="text/css">
+        @page{
+            size: letter landscape;
+            margin: 2.5cm 1.5cm 0.5cm 1.5cm;}
             body {
                 font-weight: 200;
-                font-size: 14px;
+                font-size: 20px;
             }
             .header {
                 font-size: 20px;
@@ -26,7 +29,6 @@
             .details {
                 padding: 10px 20px 0px 20px;
                 text-align: left !important;
-                /*margin-left: 40%;*/
             }
             .hrItem {
                 border: none;
@@ -40,26 +42,29 @@
     <body>
         <div class='wrapper'>
             <div class='header'>
-                <img src="schoolSystem/static/images/schoolBanner.png">
+                <img src="schoolSystem/static/images/school_banner.png">
             </div>
         <div>
         <div align="right">
             <br/>
-            Date: {{day}}, {{date}}
+            <b>Receipt Date:</b> {{receiptDate}}
         </div>
         <div class='details'>
-            Bill to: {{studentName}}<br/>
-            Amount:  {{amount}}<br/>
-            Receipt No : {{receiptNo}}
+            <b>Class :</b> {{class}}&nbsp;&nbsp;&nbsp;&nbsp; <b>Roll No:</b> {{rollNum}}
+            <br/>
+            <b>Received with thanks from :</b> {{studentName}}<br/>
+            <b>Amount :</b>  <u> Rs. {{amount}}/-</u><br/>
+            <b>Receipt No :</b> {{receiptNo}}
         </div>
         <div align="right">
             <br/>
-            <br/>
-            <br/>
             <hr class='hrItem' />
             <br/>
-            <h2>Sign</h2>
+            <h3>Sign</h3>
+            <br/>
+            <p style='font-size:12px'> <i>Printed on : {{day}}, {{date}}</i></p>
         </div>
+
     </div>
     </body>
 </html>

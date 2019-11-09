@@ -19,26 +19,29 @@ def index(request):
 
 def GeneratePdf(request,object_id):
     # Retrieve data or whatever you need
-
-    userName = "Sanket Bhumkar001"
     payment=PaymentInfo.objects.get(id=object_id)
     student=Student.objects.get(id=payment.rollNum.id)
     now = datetime.now()
-    receiptNo = str(payment.receiptNo)
+    receipt_no = str(payment.id)
     date = now.strftime("%d/%m/%Y")
+    receipt_date = payment.dateTxn
     day = now.strftime("%A")
-    #onclick = "location.href='/pdf'"
-    studentName = str(student.first_name)
+    roll_num = student.rollNum
+    class_div = str(str(student.std) + " " + student.div)
+    student_name = str(student.surname + " " + student.first_name + " " + student.middle_name)
     amount = payment.payment
     return render_to_pdf(
         'pdfTemplate.html',
         {
             'pagesize': 'A4',
-            'studentName' : studentName,
+            'studentName' : student_name,
             'amount' : amount,
             'date': date,
-            'receiptNo': receiptNo,
-            'day' : day
+            'receiptNo': receipt_no,
+            'day' : day,
+            'rollNum' : roll_num,
+            'class' : class_div,
+            'receiptDate': receipt_date
         }
     )
 
