@@ -50,7 +50,6 @@ class PaymentAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     autocomplete_fields = ("rollNum",)
     list_display = ('roll_no','name','surname','payment','dateTxn','Class','print_receipt',)
     search_fields = ('rollNum__rollNum',)
-    readonly_fields = ["receiptNo"]
     list_filter=(DateFilter,)
     # fields = (
     #      'Student_rollNum',
@@ -88,7 +87,6 @@ class PaymentAdmin(ImportExportModelAdmin,admin.ModelAdmin):
                 name='payment_receipt',
             ),
         ]
-        print('URLSSSSSSSSSSSS'+str(custom_urls + urls))
         return custom_urls + urls
 
     def print(self, request, object_id, *args, **kwargs):
