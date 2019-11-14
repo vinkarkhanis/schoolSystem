@@ -9,7 +9,7 @@ admin.site.register(Fees)
 
 @admin.register(Student)
 class StudentAdmin(ImportExportModelAdmin):
-    list_display = ('rollNum','student_class','surname','first_name')
+    list_display = ('rollNum','student_class','surname','first_name','pending_fees')
     list_filter = ('category','religion','cast','total_fee_received',)
     search_fields = ('surname','first_name','rollNum',)
     fields = (
@@ -19,6 +19,8 @@ class StudentAdmin(ImportExportModelAdmin):
 
     def student_class(self,obj):
         return "{} {}".format(obj.std, obj.div)
+    def pending_fees(self,obj):
+        return obj.fees
 
 
 
