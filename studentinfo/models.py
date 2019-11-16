@@ -28,7 +28,7 @@ class Student(models.Model):
     category = models.TextField(choices=Reader.read('categories'), default=Reader.read('categories')[0][0])
     fees=models.FloatField(blank=True, null=True)
     dob = models.DateField()
-    joining_date = models.DateField(blank=True,)
+    joining_date = models.DateField(blank=True,null=True)
     leaving_date = models.DateField(blank=True,null=True)
     birth_place = models.CharField(max_length=100,)
     prev_school = models.TextField(blank=True,null=True)

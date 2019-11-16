@@ -54,12 +54,13 @@
             <p style="font-size:28px"> This is to certify that, <b>{{studentName}}</b><br/>
                 is a bonafide student of this school studying in class: <b>{{class}}</b><br/>
                 during the year: <b>{{fiscal_year}}</b><br/>
-                {%ifequal gender 'Female'%}She{%else%}He{%endifequal%}
-                is <b>{{religion}}:{{caste}}</b> by Caste<br />
+                {%ifequal gender 'Female'%}Her{%else%}His{%endifequal%}
+                Religion is <b>{{religion}}</b><br/>
+                and caste is <b>{{caste}}</b></br>
                 Birth Place: <b>{{birthplace}}</b><br />
                 {%ifequal gender 'Female'%}Her{%else%}His{%endifequal%}
                 date of birth according to our register is: <b>{{dob}}</b><br />
-                (in words: <b>{{dob}}</b>)
+                (in words: <b>{{dob_string}}</b>)
             </p>
             <br/>
         </div>

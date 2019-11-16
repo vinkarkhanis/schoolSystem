@@ -60,6 +60,7 @@ def generate_bonafide(request,object_id):
     birthplace=student.birth_place
     student_name = str(student.last_name + " " + student.first_name + " " + student.middle_name)
     dob=student.dob
+    dob_string = dob.strftime('%A %d %B %Y')
     current_fiscal_year = FiscalYear.current()
     fiscalyear.setup_fiscal_calendar(start_month=6)
     fiscal_year = str(current_fiscal_year.start.year) + "-" + str(current_fiscal_year.end.year)
@@ -76,6 +77,7 @@ def generate_bonafide(request,object_id):
             'class' : class_div,
             'birthplace':birthplace,
             'dob':dob,
-            'fiscal_year' : fiscal_year
+            'fiscal_year' : fiscal_year,
+            'dob_string' : dob_string
         }
     )
