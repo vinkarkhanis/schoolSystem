@@ -22,7 +22,7 @@ def GeneratePdf(request,object_id):
     day = now.strftime("%A")
     roll_num = student.rollNum
     class_div = str(str(student.std) + " " + student.div)
-    student_name = str(student.surname + " " + student.first_name + " " + student.middle_name)
+    student_name = str(student.last_name + " " + student.first_name + " " + student.middle_name)
     amount = payment.payment
     return render_to_pdf(
         'pdfTemplate.html',

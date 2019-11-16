@@ -48,7 +48,7 @@ class DateFilter(InputFilter):
 @admin.register(PaymentInfo)
 class PaymentAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     autocomplete_fields = ("rollNum",)
-    list_display = ('roll_no','name','surname','payment','dateTxn','Class','print_receipt',)
+    list_display = ('roll_no','name','last_name','payment','dateTxn','Class','print_receipt',)
     search_fields = ('rollNum__rollNum',)
     list_filter=(DateFilter,)
     # fields = (
@@ -62,8 +62,8 @@ class PaymentAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     def name(self,obj):
         return "{}".format(obj.rollNum.first_name)
 
-    def surname(self,obj):
-        return "{}".format(obj.rollNum.surname)
+    def last_name(self, obj):
+        return "{}".format(obj.rollNum.last_name)
 
     def roll_no(self,obj):
         _roll_no = obj.rollNum.rollNum
