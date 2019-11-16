@@ -18,15 +18,12 @@ from django.urls import path, include
 from django.conf import settings
 
 urlpatterns = [
-    path('',include('studentinfo.urls')),
-    # path('',admin.site.urls),
-    path('admin/', admin.site.urls),
-    path('',include('user_accounts.urls')),
+    path('', admin.site.urls),
+    # path('',include('user_accounts.urls')),
     path('payment/', include('payment.urls')),
 
 ]
 
-admin.site.site_header = 'My Home Page'
-admin.site.site_title = 'Main Title |'
-admin.site.index_title = 'Index'
-admin.site.index_title = 'Index'
+admin.site.site_header = 'Home'
+admin.site.site_title = 'महात्मा फुले विदयालय, भोसरी'
+admin.site.index_title = 'Home'

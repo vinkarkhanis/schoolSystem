@@ -30,13 +30,13 @@ class ConfigReader:
             prop_tuple=(*prop_tuple, temp_opt)
         return prop_tuple
 
-    @classmethod
-    def numeric_property_reader(cls, property):
-        prop_tuple = ()
-        opt_available = cls.config.get('CategoriesSection',property)
-        options = [x.strip() for x in opt_available.split(',')]
-        for opt in options:
-            temp_opt = (int(opt), int(opt))
-            prop_tuple = (*prop_tuple, temp_opt)
-        return prop_tuple
+    # @classmethod
+    # def numeric_property_reader(cls, property):
+    #     prop_tuple = ()
+    #     opt_available = cls.config.get('CategoriesSection',property)
+    #     options = [x.strip() for x in opt_available.split(',')]
+    #     for opt in options:
+    #         temp_opt = (int(opt), int(opt))
+    #         prop_tuple = (*prop_tuple, temp_opt)
+    #     return prop_tuple
 

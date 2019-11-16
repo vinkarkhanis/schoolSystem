@@ -15,6 +15,4 @@ def paymentsetup(request):
         payment_info=list(PaymentInfo.objects.filter(rollNum=student))
         for pay in payment_info:
             print(pay.dateTxn)
-    else:
-        return render(request, 'paymetSetup.html')
 
