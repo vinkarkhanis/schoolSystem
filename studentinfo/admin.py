@@ -1,8 +1,7 @@
-from audioop import reverse
-
 from django.conf.urls import url
 from django.contrib import admin
 from django.forms import forms
+from django.urls import reverse
 from django.utils.html import format_html
 
 from .views import generate_bonafide
@@ -14,7 +13,7 @@ admin.site.register(Fees)
 
 @admin.register(Student)
 class StudentAdmin(ImportExportModelAdmin):
-    list_display = ('rollNum','student_class','last_name','first_name','pending_fees')
+    list_display = ('rollNum','student_class','last_name','first_name','pending_fees','print_bonafide')
     list_filter = ('category','religion','cast','total_fee_received',)
     search_fields = ('last_name','first_name','rollNum',)
     fields = (

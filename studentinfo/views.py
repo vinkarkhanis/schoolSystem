@@ -10,6 +10,8 @@ from payment.models import PaymentInfo
 from .models import Student
 from tablib import Dataset
 from .resources import StudentResource
+from fiscalyear import FiscalYear
+import fiscalyear
 
 def GeneratePdf(request,object_id):
     # Retrieve data or whatever you need
@@ -23,6 +25,7 @@ def GeneratePdf(request,object_id):
     roll_num = student.rollNum
     class_div = str(str(student.std) + " " + student.div)
     student_name = str(student.last_name + " " + student.first_name + " " + student.middle_name)
+    gender = student.gender
     amount = payment.payment
     return render_to_pdf(
         'pdfTemplate.html',
@@ -35,7 +38,8 @@ def GeneratePdf(request,object_id):
             'day' : day,
             'rollNum' : roll_num,
             'class' : class_div,
-            'receiptDate': receipt_date
+            'receiptDate': receipt_date,
+            'gender' : gender
         }
     )
 
@@ -56,6 +60,9 @@ def generate_bonafide(request,object_id):
     birthplace=student.birth_place
     student_name = str(student.last_name + " " + student.first_name + " " + student.middle_name)
     dob=student.dob
+    current_fiscal_year = FiscalYear.current()
+    fiscalyear.setup_fiscal_calendar(start_month=6)
+    fiscal_year = str(current_fiscal_year.start.year) + "-" + str(current_fiscal_year.end.year)
     return render_to_pdf(
         'bonafide_certificate.html',
         {
@@ -68,6 +75,7 @@ def generate_bonafide(request,object_id):
             'student_gen_reg_no' : student_gen_reg_no,
             'class' : class_div,
             'birthplace':birthplace,
-            'dob':dob
+            'dob':dob,
+            'fiscal_year' : fiscal_year
         }
     )
