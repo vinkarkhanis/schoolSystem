@@ -1,6 +1,11 @@
+from audioop import reverse
+
+from django.conf.urls import url
 from django.contrib import admin
 from django.forms import forms
+from django.utils.html import format_html
 
+from .views import generate_bonafide
 from .models import Student,Fees
 from import_export.admin import ImportExportModelAdmin
 
@@ -21,6 +26,33 @@ class StudentAdmin(ImportExportModelAdmin):
         return "{} {}".format(obj.std, obj.div)
     def pending_fees(self,obj):
         return obj.fees
+
+    def print_bonafide(self, obj):
+        return format_html('<a class="button" href="{}">Print</a>',
+                           reverse('admin:print_bonafide_certificate', args=[obj.pk]))
+
+    print_bonafide.short_description = 'Bonafide Certificate'
+    print_bonafide.allow_tags = True
+
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            url(
+                r'^(?P<object_id>.+)/bonafide/$',
+                self.admin_site.admin_view(self.print),
+                name='print_bonafide_certificate',
+            ),
+        ]
+        return custom_urls + urls
+
+    def print(self, request, object_id, *args, **kwargs):
+        return self.process_action(
+            request=request,
+            object_id=object_id
+        )
+
+    def process_action(self, request, object_id):
+        return generate_bonafide(request, object_id)
 
 
 

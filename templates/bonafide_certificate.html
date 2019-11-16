@@ -1,0 +1,80 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reciept</title>
+        <style type="text/css">
+        @page{
+            size: letter landscape;
+            margin: 2.5cm 1.5cm 0.5cm 1.5cm;}
+            body {
+                font-weight: 200;
+                font-size: 20px;
+            }
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                text-align: left !important;
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+        </style>
+    </head>
+    <body>
+        <div class='wrapper'>
+            <div class='header'>
+                <img src="schoolSystem/static/images/school_banner.png">
+            </div>
+        <div>
+        <div align="right">
+            <br/>
+            <b>Student General Reg. No.:</b> {{student_gen_reg_no}}
+        </div>
+        <div class='details'>
+            <h1 align="center">Bonafide Certificate</h1><br/><br/>
+            <p>This is to certify that, <b>{{studentName}}</b>><br/>
+                is a bonafide student of this school studying in class: <b>{{class}}</b><br/>
+                during the year: <b>{{day}}, {{date}}</b><br/>
+                He/She is <b>{{religion}}:{{caste}}</b> by Caste<br />
+                Birth Place: <b>{{birthplace}}</b><br />
+                His date of birth according to our register is: <b>{{dob}}</b><br />
+                (in words: <b>{{dob}}</b>)
+            </p>
+            <br/>
+        </div>
+            <p>
+        <div align="left">
+            <br/>
+            <hr class='hrItem' />
+            <br/>
+            <h3>Date: {{day}}, {{date}}</h3>
+        </div>
+            <div align="right">
+            <br/>
+            <hr class='hrItem' />
+            <br/>
+            <h3>Sign and Stamp</h3>
+        </div>
+        </p>
+    </div>
+    </body>
+</html>
