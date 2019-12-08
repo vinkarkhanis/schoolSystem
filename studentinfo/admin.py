@@ -14,11 +14,12 @@ admin.site.register(Fees)
 @admin.register(Student)
 class StudentAdmin(ImportExportModelAdmin):
     list_display = ('rollNum','student_class','last_name','first_name','pending_fees','print_bonafide')
-    list_filter = ('category','religion','cast','total_fee_received',)
+    list_filter = ('category','religion','div','total_fee_received',)
     search_fields = ('last_name','first_name','rollNum',)
     fields = (
         'rollNum','first_name','middle_name','last_name','gender','address','std','div','religion','cast','category','dob',
-        'joining_date','leaving_date','birth_place','prev_school','student_id','aadhar_no','register_no'
+        'joining_date','leaving_date','birth_place','prev_school','student_id','aadhar_no','register_no','student_active',
+        'exempt_fee'
     )
 
     def student_class(self,obj):

@@ -11,6 +11,7 @@ class PaymentInfo(models.Model):
     rollNum = models.ForeignKey(Student, on_delete=models.CASCADE)
     payment = models.FloatField()
     dateTxn = models.DateField()
+    receipt_no = models.CharField(max_length=20,);
     class Meta:
         verbose_name_plural = 'Payment Information'
     # def __str__(self):

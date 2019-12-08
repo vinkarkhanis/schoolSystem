@@ -32,10 +32,12 @@ class Student(models.Model):
     leaving_date = models.DateField(blank=True,null=True)
     birth_place = models.CharField(max_length=100,)
     prev_school = models.TextField(blank=True,null=True)
-    student_id = models.IntegerField()
+    student_id = models.IntegerField(blank=True,null=True)
     aadhar_no = models.CharField(max_length=20,blank=True)
-    register_no = models.CharField(max_length=50,)
+    register_no = models.CharField(max_length=50,blank=True)
     total_fee_received = models.BooleanField(default=False)
+    student_active = models.CharField(choices=Reader.read('student_active'),default=Reader.read('student_active')[0][0],max_length=5)
+    exempt_fee = models.CharField(choices=Reader.read('exempt_fee'),default=Reader.read('exempt_fee')[1][0],max_length=5)
 
     class Meta:
         unique_together = ('rollNum', 'div','std')
