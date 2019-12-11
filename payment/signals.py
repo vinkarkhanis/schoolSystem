@@ -20,6 +20,9 @@ def delete_badge(sender, instance=None, **kwargs):
     student.fees = student.fees+instance.payment
     if(student.fees == 0):
         student.total_fee_received = True;
+    elif(student.fees != 0):
+        student.total_fee_received = False;
+
     student.save()
 
 @receiver(pre_save, sender=PaymentInfo)

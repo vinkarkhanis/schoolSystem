@@ -18,7 +18,8 @@ def GeneratePdf(request,object_id):
     payment=PaymentInfo.objects.get(id=object_id)
     student=Student.objects.get(id=payment.rollNum.id)
     now = datetime.now()
-    receipt_no = str(payment.id)
+    # receipt_no = str(payment.id)
+    receipt_no = payment.receipt_no
     date = now.strftime("%d/%m/%Y")
     receipt_date = payment.dateTxn
     day = now.strftime("%A")
