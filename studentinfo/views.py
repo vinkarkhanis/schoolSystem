@@ -65,6 +65,7 @@ def generate_bonafide(request,object_id):
     current_fiscal_year = FiscalYear.current()
     fiscalyear.setup_fiscal_calendar(start_month=6)
     fiscal_year = str(current_fiscal_year.start.year) + "-" + str(current_fiscal_year.end.year)
+    gender = student.gender
     return render_to_pdf(
         'bonafide_certificate.html',
         {
@@ -79,6 +80,7 @@ def generate_bonafide(request,object_id):
             'birthplace':birthplace,
             'dob':dob,
             'fiscal_year' : fiscal_year,
-            'dob_string' : dob_string
+            'dob_string' : dob_string,
+            'gender' : gender
         }
     )
