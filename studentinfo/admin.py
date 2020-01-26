@@ -14,7 +14,7 @@ admin.site.register(Fees)
 @admin.register(Student)
 class StudentAdmin(ImportExportModelAdmin):
     list_display = ('rollNum','student_class','last_name','first_name','pending_fees','print_bonafide')
-    list_filter = ('category','religion','total_fee_received','student_class',)
+    list_filter = ('category','religion','div','total_fee_received',)
     search_fields = ('last_name','first_name','rollNum',)
     fields = (
         'rollNum','first_name','middle_name','last_name','gender','address','std','div','religion','cast','category','dob',
